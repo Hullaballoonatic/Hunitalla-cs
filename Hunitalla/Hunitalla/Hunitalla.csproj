@@ -5,13 +5,12 @@
     <ProjectGuid>{643e46a7-f26c-42bb-9481-cb1a029dc8ed}</ProjectGuid>
     <Authors>Casey Stratton</Authors>
     <Description>Provides measurement quantity types and associated units with fluent api and operators for expilicit or impilicit conversion.</Description>
-    <Version>0.0.5</Version>
+    <Version>0.0.6</Version>
     <IncludeSymbols>true</IncludeSymbols>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PackageIcon>HunitallaLogo.png</PackageIcon>
 
     <nullable>enable</nullable>
-
-    <PackageIcon>HunitallaLogo.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
