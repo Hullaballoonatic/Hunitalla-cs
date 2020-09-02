@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Authors>Casey Stratton</Authors>
+    <Description>Provides measurement quantity types and associated units with fluent api and operators for expilicit or impilicit conversion.</Description>
+    <Version>0.0.5</Version>
+
+    <nullable>enable</nullable>
+  </PropertyGroup>
+
+</Project>
