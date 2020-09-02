@@ -18,7 +18,7 @@
 
 #### Summing and Comparisons
 ```c#
-var money = 13.Dollars + 62.Cents();
+var money = 13.Dollars() + 62.Cents();
 
 Assert.True(money < 14.69.Dollars());
 
@@ -28,7 +28,7 @@ Assert.True(2.Feet() == 24.Inches());
 ```c#
 var rate = 1.DollarsPerMile();
 
-Assert.True(rate.In(LinearDollarDensity.DollarsPerFoot) == 5280)
+Assert.True(rate.In(LinearDollarDensity.DollarsPerFoot) == 5280);
 ```
 #### Converting between quantity types explicity
 ```c#
