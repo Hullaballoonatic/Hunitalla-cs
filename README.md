@@ -24,12 +24,16 @@ Assert.True(money < 14.69.Dollars());
 
 Assert.True(2.Feet() == 24.Inches());
 ```
+</br>
+
 #### Converting between units
 ```c#
 var rate = 1.DollarsPerMile();
 
 Assert.True(rate.In(LinearDollarDensity.DollarsPerFoot) == 5280);
 ```
+</br>
+
 #### Converting between quantity types explicity
 ```c#
 Distance distance = 120.Miles();
@@ -39,6 +43,8 @@ Velocity velocity = distance / time;
 
 Assert.True(v == 60.Mph());
 ```
+</br>
+
 #### Converting between quantity types implicity
 ```c#
 var distance = 120.Miles();
@@ -47,6 +53,7 @@ var time = 2.Hours();
 Assert.True(distance / time == 60.Mph());
 ```
 
+</br>
 </br>
 
 ### Using Framework
@@ -88,6 +95,8 @@ class Acceleration : QuantityOf<Acceleration>
     public static Velocity operator *(Duration a, Acceleration b) => b * a;
 }
 ```
+
+</br>
 </br>
 
 ### Debugging
