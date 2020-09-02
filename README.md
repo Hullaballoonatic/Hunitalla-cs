@@ -16,7 +16,7 @@
 ## Features & Usage
 ### Using Provided Types
 
-##### Summing and Comparisons
+#### Summing and Comparisons
 ```c#
 var money = 13.Dollars + 62.Cents();
 
@@ -30,7 +30,7 @@ var rate = 1.DollarsPerMile();
 
 Assert.True(rate.In(LinearDollarDensity.DollarsPerFoot) == 5280)
 ```
-##### Converting between quantity types explicity
+#### Converting between quantity types explicity
 ```c#
 Distance distance = 120.Miles();
 Duration time = 2.Hours();
@@ -39,7 +39,7 @@ Velocity velocity = distance / time;
 
 Assert.True(v == 60.Mph());
 ```
-##### Converting between quantity types implicity
+#### Converting between quantity types implicity
 ```c#
 var distance = 120.Miles();
 var time = 2.Hours();
