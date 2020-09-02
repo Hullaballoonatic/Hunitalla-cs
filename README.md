@@ -24,6 +24,7 @@ Assert.True(money < 14.69.Dollars());
 
 Assert.True(2.Feet() == 24.Inches());
 ```
+
 </br>
 
 #### Converting between units
@@ -43,6 +44,7 @@ Velocity velocity = distance / time;
 
 Assert.True(v == 60.Mph());
 ```
+
 </br>
 
 #### Converting between quantity types implicity
@@ -105,6 +107,7 @@ You can step into this NuGet's code while debugging by enabling and downloading 
 </br>
 
 ---
+
 </br>
 
 ### TODO
