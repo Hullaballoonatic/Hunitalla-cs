@@ -15,46 +15,39 @@ public interface IQuantity<Q> : IEquatable<Q>,
     /// <summary>
     /// Numerical measurement
     /// </summary>
-    double Amount();
+    double Amount { get; }
 
     /// <summary>
     /// Unit of measurement
     /// </summary>
-    IUnit<Q> Unit();
+    Unit<Q> Unit { get; }
 
     /// <summary>
     /// The measurement after being converted to the base unit for this Quantity
     /// </summary>
-    double BaseAmount() => Unit().ConvertToBase(Amount);
-
-    /// <summary>
-    /// The unit for this quantity from which all other units are derived.
-    /// </summary>
-    /// <example>Second for Time</example>
-    /// <example>Dollar for U.S. Dollars</example>
-    IUnit<Q> BaseUnit() => Unit().BaseUnit();
+    double BaseAmount => Unit.ConvertToBase(Amount);
 
     /// <summary>
     /// Returns amount after conversion into given <paramref name="unit"/>
     /// </summary>
     /// <param name="unit"></param>
     /// <example><c>2.Hours().In(Duration.Minute) == 120</c></example>
-    double In(IUnit<Q> unit) => unit.ConvertFromBase(BaseAmount());
+    double In(Unit<Q> unit) => unit.ConvertFromBase(BaseAmount);
 
-    Q Of(double amount) => IQuantity.Of(amount, Unit());
+    Q Of(double amount) => IQuantity.Of(amount, Unit);
 
     Q Shift(IQuantity<Q> other)
     {
-        var amount = Unit().ConvertFromBase(BaseAmount() + other.BaseAmount());
+        var amount = Unit().ConvertFromBase(BaseAmount + other.BaseAmount);
 
         return Quantify(amount);
     }
 
-    Q Scale(double scalar) => Quantify(Amount() * scalar);
+    Q Scale(double scalar) => Quantify(Amount * scalar);
 
     void VerifyComparable(IQuantity<Q> other)
     {
-        if (BaseUnit != other.BaseUnit)
+        if (Unit.Base != other.Unit.Base)
             throw new ArgumentException($"Cannot compare quantities of '{GetType().Name}' to '{other.GetType().Name}' because they have different BaseUnits.");
     }
 
@@ -72,7 +65,7 @@ public interface IQuantity<Q> : IEquatable<Q>,
     {
         const double EQUALITY_PRECISION = 1e-10;
 
-        return Math.Abs(BaseAmount() - other.BaseAmount()) < EQUALITY_PRECISION;
+        return Math.Abs(BaseAmount - other.BaseAmount) < EQUALITY_PRECISION;
     }
 
     bool Equals(IQuantity<Q> other)
@@ -89,7 +82,7 @@ public interface IQuantity<Q> : IEquatable<Q>,
             return 0;
         }
 
-        return BaseAmount.CompareTo(other.BaseAmount());
+        return BaseAmount.CompareTo(other.BaseAmount);
     }
 
     int CompareTo(IQuantity<Q> other)
@@ -122,5 +115,5 @@ public interface IQuantity<Q> : IEquatable<Q>,
     static bool operator >(IQuantity<Q> a, Q b) => !(a <= b);
     static bool operator >=(IQuantity<Q> a, Q b) => !(a < b);
 
-    static abstract Q Of(double amount, IUnit<Q> unit);
+    static abstract Q Of(double amount, Unit<Q> unit);
 }
