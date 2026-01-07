@@ -8,15 +8,15 @@ namespace Hunitalla.Framework
 /// <typeparam name="Q"></typeparam>
 public interface IUnit<Q> : IComparable<IUnit<Q>>, IEquatable<IUnit<Q>> where Q : IQuantity<Q>
 {
-    string Name();
-    string Symbol();
-    BaseUnitOf<Q> BaseUnit();
+    string Name { get; }
+    string Symbol { get; }
+    BaseUnitOf<Q> Base { get; }
 
     /// <summary>
     /// Generates a string representation of a quantity
     /// </summary>
     /// <param name="amount"></param>
-    string Stringify(double amount) => $"{amount}{Symbol()}";
+    string Stringify(double amount) => $"{amount}{Symbol}";
 
     /// <summary>
     /// Converts <paramref name="amount"/> measured in this unit into an amount in this unit's base unit.
